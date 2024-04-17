@@ -5,7 +5,7 @@ interface MultipleChoiceQuestionProps {
   options: string[];
 }
 
-const MultipleChoiceQuestion = ({ question, options }:MultipleChoiceQuestionProps) => {
+export const MultipleChoiceQuestion = ({ question, options }:MultipleChoiceQuestionProps) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const handleOptionToggle = (option: string) => {
@@ -38,5 +38,3 @@ const MultipleChoiceQuestion = ({ question, options }:MultipleChoiceQuestionProp
     </div>
   );
 };
-
-export default MultipleChoiceQuestion;

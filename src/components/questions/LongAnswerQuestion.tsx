@@ -4,7 +4,7 @@ interface LongAnswerQuestionProps {
   question: string;
 }
 
-const LongAnswerQuestion = ({ question }:LongAnswerQuestionProps) => {
+export const LongAnswerQuestion = ({ question }:LongAnswerQuestionProps) => {
   const [answer, setAnswer] = useState<string>('');
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -19,5 +19,3 @@ const LongAnswerQuestion = ({ question }:LongAnswerQuestionProps) => {
     </div>
   );
 };
-
-export default LongAnswerQuestion;

@@ -4,7 +4,7 @@ interface ShortAnswerQuestionProps {
   question: string;
 }
 
-const ShortAnswerQuestion = ({ question }:ShortAnswerQuestionProps) => {
+export const ShortAnswerQuestion = ({ question }:ShortAnswerQuestionProps) => {
   const [answer, setAnswer] = useState<string>('');
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,5 +19,3 @@ const ShortAnswerQuestion = ({ question }:ShortAnswerQuestionProps) => {
     </div>
   );
 };
-
-export default ShortAnswerQuestion;

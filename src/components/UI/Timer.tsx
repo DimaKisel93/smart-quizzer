@@ -4,7 +4,7 @@ interface TimerProps {
   duration: number;
 }
 
-const Timer = ({ duration }:TimerProps) => {
+export const Timer = ({ duration }:TimerProps) => {
   const [timeRemaining, setTimeRemaining] = useState<number>(duration);
 
   useEffect(() => {
@@ -21,5 +21,3 @@ const Timer = ({ duration }:TimerProps) => {
     </div>
   );
 };
-
-export default Timer;

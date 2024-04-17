@@ -3,7 +3,7 @@ interface ProgressProps {
   totalQuestions: number;
 }
 
-const Progress = ({ currentQuestion, totalQuestions }:ProgressProps) => {
+export const Progress = ({ currentQuestion, totalQuestions }:ProgressProps) => {
   const progressPercentage = Math.ceil((currentQuestion / totalQuestions) * 100);
 
   return (
@@ -12,5 +12,3 @@ const Progress = ({ currentQuestion, totalQuestions }:ProgressProps) => {
     </div>
   );
 };
-
-export default Progress;

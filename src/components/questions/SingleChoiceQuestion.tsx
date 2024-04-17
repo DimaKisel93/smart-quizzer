@@ -5,7 +5,7 @@ interface SingleChoiceQuestionProps {
   options: string[];
 }
 
-const SingleChoiceQuestion = ({ question, options }:SingleChoiceQuestionProps) => {
+export const SingleChoiceQuestion = ({ question, options }:SingleChoiceQuestionProps) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleOptionSelect = (option: string) => {
@@ -34,5 +34,3 @@ const SingleChoiceQuestion = ({ question, options }:SingleChoiceQuestionProps) =
     </div>
   );
 };
-
-export default SingleChoiceQuestion;
