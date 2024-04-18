@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { OptionsType } from '../../types/types';
 
 interface MultipleChoiceQuestionProps {
   question: string;
-  options: string[];
+  options: OptionsType[];
+  handleMultipleChoiceAnswer: (answers: string[]) => void;
 }
 
-export const MultipleChoiceQuestion = ({ question, options }:MultipleChoiceQuestionProps) => {
+export const MultipleChoiceQuestion = ({ question, options, handleMultipleChoiceAnswer }: MultipleChoiceQuestionProps) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const handleOptionToggle = (option: string) => {
@@ -21,20 +23,21 @@ export const MultipleChoiceQuestion = ({ question, options }:MultipleChoiceQuest
     <div>
       <h3>{question}</h3>
       <ul>
-        {options.map((option, index) => (
-          <li key={index}>
+        {options.map(({id, text}) => ( 
+          <li key={id}> 
             <input
               type="checkbox"
-              id={option}
-              value={option}
-              checked={selectedOptions.includes(option)}
-              onChange={() => handleOptionToggle(option)}
+              id={text}
+              value={text}
+              checked={selectedOptions.includes(text)}
+              onChange={() => handleOptionToggle(text)}
             />
-            <label htmlFor={option}>{option}</label>
+            <label htmlFor={text}>{text}</label>
           </li>
         ))}
       </ul>
-      <p>Selected Options: {selectedOptions.join(', ')}</p>
+      <p>Выбранные ответы: {selectedOptions.join(', ')}</p>
+      <button onClick={() => handleMultipleChoiceAnswer(selectedOptions)}>Ответить</button>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { OptionsType } from '../../types/types';
 
 interface SingleChoiceQuestionProps {
   question: string;
-  options: string[];
+  options: OptionsType[];
+  handleSingleChoiceAnswer: (answer:string) => void;
 }
 
-export const SingleChoiceQuestion = ({ question, options }:SingleChoiceQuestionProps) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+export const SingleChoiceQuestion = ({ question, options, handleSingleChoiceAnswer }:SingleChoiceQuestionProps) => {
+  const [selectedOption, setSelectedOption] = useState('');
 
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
@@ -16,21 +18,22 @@ export const SingleChoiceQuestion = ({ question, options }:SingleChoiceQuestionP
     <div>
       <h3>{question}</h3>
       <ul>
-        {options.map((option, index) => (
-          <li key={index}>
+        {options.map(({id, text}) => (
+          <li key={id}>
             <input
               type="radio"
-              id={option}
+              id={text}
               name="singleChoice"
-              value={option}
-              checked={selectedOption === option}
-              onChange={() => handleOptionSelect(option)}
+              value={text}
+              checked={selectedOption === text}
+              onChange={() => handleOptionSelect(text)}
             />
-            <label htmlFor={option}>{option}</label>
+            <label htmlFor={text}>{text}</label>
           </li>
         ))}
       </ul>
-      <p>Selected Option: {selectedOption}</p>
+      <p>Выбранный ответ: {selectedOption}</p>
+      <button onClick={() => handleSingleChoiceAnswer(selectedOption)}>Ответить</button>
     </div>
   );
 };

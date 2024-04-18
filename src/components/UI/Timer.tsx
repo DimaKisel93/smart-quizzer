@@ -17,7 +17,7 @@ export const Timer = ({ duration }:TimerProps) => {
 
   return (
     <div>
-      <p>Time Remaining: {timeRemaining} seconds</p>
+      <p>{timeRemaining} </p>
     </div>
   );
 };
