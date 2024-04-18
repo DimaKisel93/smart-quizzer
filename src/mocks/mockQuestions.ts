@@ -1,6 +1,6 @@
-import { Question } from "../types/types";
+import { Question } from '../types/types'
 
-export const mockQuestions: Question[]= [
+export const mockQuestions: Question[] = [
   {
     id: 1,
     type: 'single_choice',
@@ -9,8 +9,8 @@ export const mockQuestions: Question[]= [
       { id: 1, text: 'Hyper Text Markup Language' },
       { id: 2, text: 'Hyperlinks and Text Markup Language' },
       { id: 3, text: 'Home Tool Markup Language' },
-      { id: 4, text: 'Hyper Tool Multi Language' }
-    ]
+      { id: 4, text: 'Hyper Tool Multi Language' },
+    ],
   },
   {
     id: 2,
@@ -20,19 +20,20 @@ export const mockQuestions: Question[]= [
       { id: 1, text: '.css' },
       { id: 2, text: '.html' },
       { id: 3, text: '.js' },
-      { id: 4, text: '.php' }
-    ]
+      { id: 4, text: '.php' },
+    ],
   },
   {
     id: 3,
     type: 'multiple_choice',
-    question: 'Какие языки программирования используются для создания интерактивности на веб-страницах?',
+    question:
+      'Какие языки программирования используются для создания интерактивности на веб-страницах?',
     options: [
       { id: 1, text: 'JavaScript' },
       { id: 2, text: 'PHP' },
       { id: 3, text: 'Python' },
-      { id: 4, text: 'Ruby' }
-    ]
+      { id: 4, text: 'Ruby' },
+    ],
   },
   {
     id: 4,
@@ -52,8 +53,8 @@ export const mockQuestions: Question[]= [
       { id: 1, text: 'let' },
       { id: 2, text: 'var' },
       { id: 3, text: 'const' },
-      { id: 4, text: 'all of the above' }
-    ]
+      { id: 4, text: 'all of the above' },
+    ],
   },
   {
     id: 7,
@@ -63,8 +64,8 @@ export const mockQuestions: Question[]= [
       { id: 1, text: '57' },
       { id: 2, text: '12' },
       { id: 3, text: '23' },
-      { id: 4, text: 'NaN' }
-    ]
+      { id: 4, text: 'NaN' },
+    ],
   },
   {
     id: 8,
@@ -78,8 +79,8 @@ export const mockQuestions: Question[]= [
       { id: 5, text: 'entries()' },
       { id: 6, text: 'clear()' },
       { id: 7, text: 'pop()' },
-      { id: 8, text: 'size()' }
-    ]
+      { id: 8, text: 'size()' },
+    ],
   },
   {
     id: 9,
@@ -99,19 +100,22 @@ export const mockQuestions: Question[]= [
       { id: 1, text: 'npx create-react-app my-app' },
       { id: 2, text: 'npm init react-app my-app' },
       { id: 3, text: 'create-react my-app' },
-      { id: 4, text: 'npm create-react my-app' }
-    ]
+      { id: 4, text: 'npm create-react my-app' },
+    ],
   },
   {
     id: 12,
     type: 'single_choice',
     question: 'Что такое JSX в React?',
     options: [
-      { id: 1, text: 'Расширение JavaScript, которое позволяет писать HTML-подобный код в JavaScript' },
+      {
+        id: 1,
+        text: 'Расширение JavaScript, которое позволяет писать HTML-подобный код в JavaScript',
+      },
       { id: 2, text: 'JavaScript библиотека для работы с DOM' },
       { id: 3, text: 'Шаблонизатор для React-компонентов' },
-      { id: 4, text: 'Препроцессор для стилей в React-приложениях' }
-    ]
+      { id: 4, text: 'Препроцессор для стилей в React-приложениях' },
+    ],
   },
   {
     id: 13,
@@ -122,8 +126,8 @@ export const mockQuestions: Question[]= [
       { id: 2, text: 'componentWillUnmount' },
       { id: 3, text: 'componentWillUpdate' },
       { id: 4, text: 'shouldComponentUpdate' },
-      { id: 5, text: 'render' }
-    ]
+      { id: 5, text: 'render' },
+    ],
   },
   {
     id: 14,
@@ -133,7 +137,7 @@ export const mockQuestions: Question[]= [
   {
     id: 15,
     type: 'long_answer',
-    question: 'Чем отличается компонент React от функционального компонента и классового компонента?',
+    question:
+      'Чем отличается компонент React от функционального компонента и классового компонента?',
   },
-];
-
+]

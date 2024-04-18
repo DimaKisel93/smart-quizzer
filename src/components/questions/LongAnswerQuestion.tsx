@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 interface LongAnswerQuestionProps {
-  question: string;
-  handleSingleChoiceAnswer: (answer:string) => void;
+  question: string
+  handleSingleChoiceAnswer: (answer: string) => void
 }
 
-export const LongAnswerQuestion = ({ question, handleSingleChoiceAnswer }:LongAnswerQuestionProps) => {
-  const [answer, setAnswer] = useState<string>('');
+export const LongAnswerQuestion = ({
+  question,
+  handleSingleChoiceAnswer,
+}: LongAnswerQuestionProps) => {
+  const [answer, setAnswer] = useState<string>('')
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setAnswer(event.target.value);
-  };
+    setAnswer(event.target.value)
+  }
 
   return (
     <div>
@@ -19,5 +22,5 @@ export const LongAnswerQuestion = ({ question, handleSingleChoiceAnswer }:LongAn
       <p>Ответ: {answer}</p>
       <button onClick={() => handleSingleChoiceAnswer(answer)}>Ответить</button>
     </div>
-  );
-};
+  )
+}

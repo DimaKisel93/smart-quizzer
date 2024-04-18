@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 interface ShortAnswerQuestionProps {
-  question: string;
-  handleSingleChoiceAnswer: (answer:string) => void;
+  question: string
+  handleSingleChoiceAnswer: (answer: string) => void
 }
 
-export const ShortAnswerQuestion = ({ question, handleSingleChoiceAnswer }:ShortAnswerQuestionProps) => {
-  const [answer, setAnswer] = useState<string>('');
+export const ShortAnswerQuestion = ({
+  question,
+  handleSingleChoiceAnswer,
+}: ShortAnswerQuestionProps) => {
+  const [answer, setAnswer] = useState<string>('')
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.target.value);
-  };
+    setAnswer(event.target.value)
+  }
 
   return (
     <div>
@@ -19,5 +22,5 @@ export const ShortAnswerQuestion = ({ question, handleSingleChoiceAnswer }:Short
       <p>Ответ: {answer}</p>
       <button onClick={() => handleSingleChoiceAnswer(answer)}>Ответить</button>
     </div>
-  );
-};
+  )
+}

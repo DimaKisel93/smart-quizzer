@@ -1,24 +1,28 @@
-import { useState } from 'react';
-import { Option } from '../../types/types';
+import { useState } from 'react'
+import { Option } from '../../types/types'
 
 interface SingleChoiceQuestionProps {
-  question: string;
-  options: Option[];
-  handleSingleChoiceAnswer: (answer:string) => void;
+  question: string
+  options: Option[]
+  handleSingleChoiceAnswer: (answer: string) => void
 }
 
-export const SingleChoiceQuestion = ({ question, options, handleSingleChoiceAnswer }:SingleChoiceQuestionProps) => {
-  const [selectedOption, setSelectedOption] = useState('');
+export const SingleChoiceQuestion = ({
+  question,
+  options,
+  handleSingleChoiceAnswer,
+}: SingleChoiceQuestionProps) => {
+  const [selectedOption, setSelectedOption] = useState('')
 
   const handleOptionSelect = (option: string) => {
-    setSelectedOption(option);
-  };
+    setSelectedOption(option)
+  }
 
   return (
     <div>
       <h3>{question}</h3>
       <ul>
-        {options.map(({id, text}) => (
+        {options.map(({ id, text }) => (
           <li key={id}>
             <input
               type="radio"
@@ -35,5 +39,5 @@ export const SingleChoiceQuestion = ({ question, options, handleSingleChoiceAnsw
       <p>Выбранный ответ: {selectedOption}</p>
       <button onClick={() => handleSingleChoiceAnswer(selectedOption)}>Ответить</button>
     </div>
-  );
-};
+  )
+}
