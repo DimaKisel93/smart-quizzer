@@ -1,5 +1,4 @@
 import './App.css';
-import { Timer } from './components/UI/Timer';
 import TestPage from './pages/TestPage';
 
 function App() {
@@ -10,7 +9,6 @@ function App() {
         <p>
           Тестирование
         </p>
-        <Timer duration={200} ></Timer>
       </header>
       <main>
         <TestPage />

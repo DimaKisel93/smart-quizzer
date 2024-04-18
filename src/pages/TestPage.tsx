@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { mockQuestions } from '../mocks/mockQuestions';
 import { QuestionFactory } from '../components/questions/questionFactory/QuestionFactory';
 import { useQuestionAnswers } from '../hooks/useQuestionAnswers';
-import TestProgressBar from '../components/UI/ProgressBar';
+import { TestProgressBar } from '../components/UI/ProgressBar';
+import { Timer } from '../components/UI/Timer';
+import { TestResult } from '../components/UI/TestResult';
 
 const TestPage = () => {
   const [currentStep, setCurrentStep] = useState(0); 
   const [questionsStatus, setQuestionsStatus] = useState(() => new Array(mockQuestions.length).fill(false));
   const { answers, addSingleChoiceAnswer, addMultipleChoiceAnswer } = useQuestionAnswers();
+  const [isTimeEnd, setIsTimeEnd] = useState(false);
 
   const handleSingleChoiceAnswer = (answer:string, questionId:number) => {
     addSingleChoiceAnswer(questionId, answer);
@@ -33,17 +36,22 @@ const TestPage = () => {
     setCurrentStep(step);
   };
 
+  const handleTimerEnd = () => {
+    setIsTimeEnd(true);
+  };
+
   const currentQuestion = mockQuestions[currentStep];
 
   return (
     <>
+      <Timer duration={150} handleTimerEnd={handleTimerEnd} /> 
       <TestProgressBar 
         totalQuestions={mockQuestions.length} 
         currentQuestion={currentStep} 
         handleStepClick={handleStepClick} 
         questionsStatus={questionsStatus}
       />
-      {currentQuestion && currentStep < mockQuestions.length ? (
+      {!isTimeEnd && currentQuestion && currentStep < mockQuestions.length ? (
         <form>
           {currentQuestion.options ? (
               <QuestionFactory
@@ -64,26 +72,14 @@ const TestPage = () => {
           )}
         </form>
       ) : (
-        <div>
-          <h2>Спасибо за прохождение теста!</h2>
-          <p className='answers'>
-            Ваши ответы: 
-            {answers.map(({ questionId, answer }) => {
-              const questionText = mockQuestions.find(question => question.id === questionId)?.question || 'Вопрос не найден';
-              return (
-                <span key={questionId}>
-                  {questionText}: {Array.isArray(answer) ? answer.join(', ') : answer}
-                </span>
-              );
-            })}
-          </p>
-        </div>
+        <TestResult answers={answers} mockQuestions={mockQuestions} />
       )}
     </>
   );
 };
 
 export default TestPage;
+
 
 
 

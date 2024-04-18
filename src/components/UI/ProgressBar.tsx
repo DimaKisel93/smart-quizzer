@@ -5,7 +5,7 @@ interface ProgressProps {
   handleStepClick: (id: number) => void;
 }
 
-const TestProgressBar = ({ totalQuestions, currentQuestion, handleStepClick, questionsStatus }:ProgressProps) => {
+export const TestProgressBar = ({ totalQuestions, currentQuestion, handleStepClick, questionsStatus }:ProgressProps) => {
   const progressBars = Array.from({ length: totalQuestions }, (_, i) => {
     const isActive = i === currentQuestion;
     const isCompleted = questionsStatus[i];
@@ -25,5 +25,3 @@ const TestProgressBar = ({ totalQuestions, currentQuestion, handleStepClick, que
     </div>
   );
 };
-
-export default TestProgressBar;

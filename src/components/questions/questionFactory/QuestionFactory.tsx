@@ -1,10 +1,10 @@
 import { SingleChoiceQuestion, MultipleChoiceQuestion, ShortAnswerQuestion, LongAnswerQuestion} from '../';
-import { OptionsType } from '../../../types/types';
+import { Option } from '../../../types/types';
 
 interface QuestionFactoryProps {
   type: string;
   question: string;
-  options?: OptionsType[];
+  options?: Option[];
   handleSingleChoiceAnswer: (answer:string) => void;
   handleMultipleChoiceAnswer?: (answers: string[]) => void;
 }

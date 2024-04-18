@@ -42,11 +42,18 @@ ul {
 .progress-step.active {
   background-color: green;
 }
+
 .progress-step.completed {
   background-color: red;
 }
 
-.answers{
+.answers {
   display: flex;
   flex-direction: column;
 }
+
+.timer {
+  text-align: center;
+  font-size: 20px;
+}
+

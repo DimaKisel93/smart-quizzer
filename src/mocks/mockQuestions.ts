@@ -1,4 +1,6 @@
-export const mockQuestions = [
+import { Question } from "../types/types";
+
+export const mockQuestions: Question[]= [
   {
     id: 1,
     type: 'single_choice',

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { OptionsType } from '../../types/types';
+import { Option } from '../../types/types';
 
 interface MultipleChoiceQuestionProps {
   question: string;
-  options: OptionsType[];
+  options: Option[];
   handleMultipleChoiceAnswer: (answers: string[]) => void;
 }
 
