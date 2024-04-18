@@ -2,49 +2,67 @@ import { useState } from 'react';
 import { mockQuestions } from '../mocks/mockQuestions';
 import { QuestionFactory } from '../components/questions/questionFactory/QuestionFactory';
 import { useQuestionAnswers } from '../hooks/useQuestionAnswers';
+import TestProgressBar from '../components/UI/ProgressBar';
 
 const TestPage = () => {
   const [currentStep, setCurrentStep] = useState(0); 
- const { answers, addSingleChoiceAnswer, addMultipleChoiceAnswer } = useQuestionAnswers();
+  const [questionsStatus, setQuestionsStatus] = useState(() => new Array(mockQuestions.length).fill(false));
+  const { answers, addSingleChoiceAnswer, addMultipleChoiceAnswer } = useQuestionAnswers();
 
-  const handleSingleChoiceAnswer = (answer: string) => {
-    addSingleChoiceAnswer(currentQuestion.id, answer);
+  const handleSingleChoiceAnswer = (answer:string, questionId:number) => {
+    addSingleChoiceAnswer(questionId, answer);
+    handleQuestionCompletion(questionId - 1);
     setCurrentStep(currentStep + 1);
   };
   
-  const handleMultipleChoiceAnswer = (selectedOptions: string[]) => {
-    addMultipleChoiceAnswer(currentQuestion.id, selectedOptions);
+  const handleMultipleChoiceAnswer = (selectedOptions:string[], questionId:number) => {
+    addMultipleChoiceAnswer(questionId, selectedOptions);
+    handleQuestionCompletion(questionId - 1);
     setCurrentStep(currentStep + 1);
+  };
+
+  const handleQuestionCompletion = (questionId:number) => {
+    setQuestionsStatus(prevStatus => {
+      const updatedStatus = [...prevStatus];
+      updatedStatus[questionId] = true;
+      return updatedStatus;
+    });
+  };
+
+  const handleStepClick = (step:number) => {
+    setCurrentStep(step);
   };
 
   const currentQuestion = mockQuestions[currentStep];
 
   return (
     <>
+      <TestProgressBar 
+        totalQuestions={mockQuestions.length} 
+        currentQuestion={currentStep} 
+        handleStepClick={handleStepClick} 
+        questionsStatus={questionsStatus}
+      />
       {currentQuestion && currentStep < mockQuestions.length ? (
-        <div>
+        <form>
           {currentQuestion.options ? (
-            <form>
               <QuestionFactory
                 key={currentQuestion.id}
                 question={currentQuestion.question}
                 options={currentQuestion.options}
                 type={currentQuestion.type}
-                handleSingleChoiceAnswer={handleSingleChoiceAnswer}
-                handleMultipleChoiceAnswer={handleMultipleChoiceAnswer}
+                handleSingleChoiceAnswer={(answer) => handleSingleChoiceAnswer(answer, currentQuestion.id)}
+                handleMultipleChoiceAnswer={(answers) => handleMultipleChoiceAnswer(answers, currentQuestion.id)}
               />
-            </form>
           ) : (
-            <form>
               <QuestionFactory
                 key={currentQuestion.id}
                 question={currentQuestion.question}
                 type={currentQuestion.type}
-                handleSingleChoiceAnswer={handleSingleChoiceAnswer}
+                handleSingleChoiceAnswer={(answer) => handleSingleChoiceAnswer(answer, currentQuestion.id)}
               />
-            </form>
           )}
-        </div>
+        </form>
       ) : (
         <div>
           <h2>Спасибо за прохождение теста!</h2>
